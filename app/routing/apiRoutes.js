@@ -1,23 +1,53 @@
-// * A GET route with the url `/api/friends`. This will be used to display a JSON of all possible friends.
-// * A POST routes `/api/friends`. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
-var friends = require('../data/friends.js'); 
-const fs = require('fs');
-const bodyParser = require('body-parser');
-const path = require('path');
-module.exports = function (app) {
+var friends = require('../data/friends.js');
+let friendGroup = [];
 
+// used to reduce score arrays once maths have been done
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+module.exports = function (app) {
+    // send list of all people who have taken the survey
     app.get('/api/friends', function (req, res) {
-        console.log(friends);
         res.json(friends);
     });
 
-    app.post('/api/friends',function (req, res) {
-        friends.push(req.body);
-        res.json(friends);
+    // check compatibility between end-user and friends list data
+    app.post('/api/friends', function (req, res) {
+        let newFriend = req.body;
+        console.log(newFriend)
+        let closestMatch = [];
+
+        // check answers against each friend
+        friends.forEach(friend => {
+            let scoreArray = [];
+            // compare survey answers to calculate compatibility
+            friend.scores.forEach((score, index) => {
+                scoreArray.push(Math.abs(newFriend.scores[index] - score))
+            })
+            // reduce score arrays 
+            closestMatch.push({
+                name: friend.name,
+                score: scoreArray.reduce(reducer),
+                photo: friend.photo
+            })
+        });
+        // get an array of just difference of scores
+        let lowNum = closestMatch.map(function (match) {
+            return match.score;
+        })
+        // use the difference of scores array to find the closest match score
+        min = Math.min.apply(null, lowNum);
+        // find all friends with a score matching the closest match and push them to the friendGroup array
+        closestMatch.forEach(match => findLowest(match));
+        res.json(friendGroup); // send JSON of closest match friends
+
         
-        // fs.appendFile(friends, req.body, (err) => {
-        //     if (err) throw err;
-        //     console.log('Data appended to file!');
-        //   })
     });
 };
+
+// pushes all lowest difference matches to an array
+// allows for multiple friends in the off chance there is a tie
+function findLowest(match) { 
+    if (match.score === min) {
+        friendGroup.push({name:match.name, photo: match.photo } );
+    } 
+}

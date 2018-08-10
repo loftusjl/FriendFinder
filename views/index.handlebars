@@ -1,0 +1,114 @@
+{{!-- FORM SECTION --}}
+<h1>Survey Page</h1>
+<p>Scale of 1 to 5. 1 strongly disagree, 5 strongly agree</p>
+<form action="/api/friends" method="post" id="questions">
+    {{#each surveyQuestions}}
+    <p>{{num}}) {{question}}</p>
+    <div class="questions">
+        <div class="answer">
+            <p>
+                <label>
+                    <input type="radio" name="q{{num}}" value="1" id="q1" checked>
+                    <span>1</span>
+                </label>
+            </p>
+        </div>
+        <div class="answer">
+            <p>
+                <label>
+                    <input type="radio" name="q{{num}}" value="2" id="q2">
+                    <span>2</span>
+                </label>
+            </p>
+        </div>
+        <div class="answer">
+            <p>
+                <label>
+                    <input type="radio" name="q{{num}}" value="3" id="q3">
+                    <span>3</span>
+                </label>
+            </p>
+        </div>
+        <div class="answer">
+            <p>
+                <label>
+                    <input type="radio" name="q{{num}}" value="4" id="q4">
+                    <span>4</span>
+                </label>
+            </p>
+        </div>
+        <div class="answer">
+            <p>
+                <label>
+                    <input type="radio" name="q{{num}}" value="5" id="q5">
+                    <span>5</span>
+                </label>
+            </p>
+        </div>
+    </div>
+    {{/each}}
+    <button type="submit">Find your friends!</button>
+</form>
+
+{{!-- FOOTER SECTION --}}
+<footer>
+
+</footer>
+{{!-- MODAL --}}
+<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h4>Friend Matches</h4>
+			<div class="divider"></div>
+			<div class="friendMatch">
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="/survey" class="modal-action modal-close waves-effect">Retake Survey</a>
+		</div>
+	</div>
+{{!-- Import jQuery for ajax calls --}}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+    document.getElementById("questions").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        let userInput = {
+            scores: [
+                $('input[name="q1"]:checked').val(),
+                $('input[name="q2"]:checked').val(),
+                $('input[name="q3"]:checked').val(),
+                $('input[name="q4"]:checked').val(),
+                $('input[name="q5"]:checked').val(),
+                $('input[name="q6"]:checked').val(),
+                $('input[name="q7"]:checked').val(),
+                $('input[name="q8"]:checked').val(),
+                $('input[name="q9"]:checked').val(),
+                $('input[name="q10"]:checked').val()
+            ]
+        }
+        console.log(userInput)
+        $.ajax("/api/friends", {
+            type: "POST",
+            data: userInput
+        })
+        .done(friends => {
+            console.log(JSON.stringify(friends));
+            // append friend matches to modal
+            friends.forEach(friend => {
+            $(".friendMatch").append(`<h4>${friend.name}</h4><img src="${friend.photo}" alt="">`)
+            })
+            // open modal
+            $('#modal1').modal('open');
+        })
+
+    })
+
+</script>
+<!--Materialize-->
+<script type="text/javascript" src="js/materialize.min.js"></script>

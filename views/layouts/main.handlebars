@@ -1,14 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-      <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
-		<title>Friend Finder Survey</title>
-	</head>
-	<body>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Friend Finder</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+	 crossorigin="anonymous">
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="./css/materialize.min.css" media="screen,projection" />
+	<link rel="stylesheet" type="text/css" media="screen" href="./css/style.css" />
+</head>
+
+<body>
+
+  
+        
+<header>
+    <nav class="nav-wrapper grey darken-2">
+        <div class="container" id="myNavbar">
+            <a href="https://loftusjl.github.io/" class="brand-logo">Jesse Loftus</a>
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="https://loftusjl.github.io/">About Me</a>
+                </li>
+                <li>
+                    <a href="https://loftusjl.github.io/#portfolio">Portfolio</a>
+                </li>
+                <li>
+                    <a href="https://loftusjl.github.io/#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 		{{{ body }}}
+
+		<!-- SCRIPTS -->
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		 crossorigin="anonymous"></script>
+		<!--Materialize-->
+		<script type="text/javascript" src="./js/materialize.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				$('.sidenav').sidenav();
+				$('.materialboxed').materialbox();
+				$('.parallax').parallax();
+				$('.tooltipped').tooltip();
+				$('.fixed-action-btn').floatingActionButton({
+					toolbarEnabled: true
+				});
+			})
+		</script>
 	</body>
+
 </html>

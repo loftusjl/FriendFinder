@@ -39,6 +39,9 @@ html, body{
 .sidenav-wrapper {
         padding-left: 300px;
 }
+.modal {
+    overflow:hidden;
+}
 #mobile-menu {
     background-color: rgba(43, 55, 55, 0.603);
     padding: 15px;

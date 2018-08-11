@@ -64,24 +64,25 @@
 </div>
 
 {{!-- FOOTER SECTION --}}
-<footer class="page-footer grey darken-2">
+<footer class="page-footer grey darken-2 grey-text text-lighten-5">
     <div class="container">
         <div class="row">
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Links</h5>
                 <ul>
                     <li>
-                        <a href="https://github.com/loftusjl" target="_blank" class="tooltipped" data-position="top" data-tooltip="GitHub">
+                        <a href="https://github.com/loftusjl" target="_blank" class="tooltipped grey-text text-lighten-5" data-position="top" data-tooltip="GitHub">
                             <i class="fab fa-lg fa-github-square fa-2x left"></i> GitHub
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/jesse-loftus-861aaa1b/" target="_blank" class="tooltipped" data-position="top" data-tooltip="Linkedin">
+                        <a href="https://www.linkedin.com/in/jesse-loftus-861aaa1b/" target="_blank" class="tooltipped grey-text text-lighten-5"
+                            data-position="top" data-tooltip="Linkedin">
                             <i class="fab fa-lg fa-linkedin fa-2x left"></i>Linkedin
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/JLLoft" target="_blank" class="tooltipped" data-position="top" data-tooltip="Twitter">
+                        <a href="https://twitter.com/JLLoft" target="_blank" class="tooltipped grey-text text-lighten-5" data-position="top" data-tooltip="Twitter">
                             <i class="fab fa-lg fa-twitter-square fa-2x left"></i>Twitter
                         </a>
                     </li>
@@ -99,13 +100,13 @@
 {{!-- MODAL --}}
 <div id="modal1" class="modal">
     <div class="modal-content">
-        <h4>Friend Matches</h4>
+        <h2>Friend Matches</h2>
         <div class="divider"></div>
         <div class="friendMatch">
         </div>
     </div>
     <div class="modal-footer">
-        <a href="/survey" class="modal-action modal-close waves-effect">Retake Survey</a>
+        <a href="/survey" class="modal-action modal-close waves-effect waves-light btn-large">Retake Survey</a>
     </div>
 </div>
 
@@ -140,7 +141,21 @@
                 console.log(JSON.stringify(friends));
                 // append friend matches to modal
                 friends.forEach(friend => {
-                    $(".friendMatch").append(`<h4>${friend.name}</h4><img src="${friend.photo}" alt="">`)
+                    $(".friendMatch").append(`<div class="col s12 m7">
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="${friend.photo}">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <h3 class="header">${friend.name}</h3>
+        </div>
+        <div class="card-action">
+          <a href="#">Profile Link</a>
+        </div>
+      </div>
+    </div>
+  </div>`)
                 })
                 // open modal
                 $('#modal1').modal('open');

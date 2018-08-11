@@ -56,25 +56,25 @@
 </footer>
 {{!-- MODAL --}}
 <div id="modal1" class="modal">
-		<div class="modal-content">
-			<h4>Friend Matches</h4>
-			<div class="divider"></div>
-			<div class="friendMatch">
-			</div>
-		</div>
-		<div class="modal-footer">
-			<a href="/survey" class="modal-action modal-close waves-effect">Retake Survey</a>
-		</div>
-	</div>
+    <div class="modal-content">
+        <h4>Friend Matches</h4>
+        <div class="divider"></div>
+        <div class="friendMatch">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="/survey" class="modal-action modal-close waves-effect">Retake Survey</a>
+    </div>
+</div>
 {{!-- Import jQuery for ajax calls --}}
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-  });
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
     document.getElementById("questions").addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -97,15 +97,15 @@ document.addEventListener('DOMContentLoaded', function() {
             type: "POST",
             data: userInput
         })
-        .done(friends => {
-            console.log(JSON.stringify(friends));
-            // append friend matches to modal
-            friends.forEach(friend => {
-            $(".friendMatch").append(`<h4>${friend.name}</h4><img src="${friend.photo}" alt="">`)
+            .done(friends => {
+                console.log(JSON.stringify(friends));
+                // append friend matches to modal
+                friends.forEach(friend => {
+                    $(".friendMatch").append(`<h4>${friend.name}</h4><img src="${friend.photo}" alt="">`)
+                })
+                // open modal
+                $('#modal1').modal('open');
             })
-            // open modal
-            $('#modal1').modal('open');
-        })
 
     })
 

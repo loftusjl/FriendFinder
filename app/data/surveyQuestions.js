@@ -1,7 +1,7 @@
 let surveyQuestions = [
-    {num:1, question: "Doctor Rick is an incredible name and will be the name of my next child"},
+    {num:1, question: "Pickle Rick is an incredible name and will be the name of my next child"},
     {num:2, question: "If I had to choose between an apple or a pear, I'd go with a GMO variation because science makes superior foods"},
-    {num:3, question: "Salmon is just a way to say pink without making a guy feel girly"},
+    {num:3, question: "Salmon is a lame way to avoid saying you're wearing pink"},
     {num:4, question: "Nickleback is Canada's national band"},
     {num:5, question: "Coffee > Tea"},
     {num:6, question: "Kleenex are reusable"},

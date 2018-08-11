@@ -1,58 +1,100 @@
-{{!-- FORM SECTION --}}
-<h1>Survey Page</h1>
-<p>Scale of 1 to 5. 1 strongly disagree, 5 strongly agree</p>
-<form action="/api/friends" method="post" id="questions">
-    {{#each surveyQuestions}}
-    <p>{{num}}) {{question}}</p>
-    <div class="questions">
-        <div class="answer">
-            <p>
-                <label>
-                    <input type="radio" name="q{{num}}" value="1" id="q1" checked>
-                    <span>1</span>
-                </label>
-            </p>
+<div class="container card-container">
+    {{!-- FORM SECTION --}}
+    <h1 class="amber-text text-lighten-5">Friend Finder Survey</h1>
+    <p class="amber-text text-lighten-5 flow-text">On a scale of 1 to 5 how strongly do you agree with the below statements?</p>
+    <form action="/api/friends" method="post" id="questions">
+        {{#each surveyQuestions}}
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card z-depth-4">
+                    <span class="card-title flow-text">{{num}}) {{question}}</span>
+                    <div class="card-content">
+                        <div class="questions card-action">
+                            <div class="answer">
+                                <p>
+                                    <label class="hoverable">
+                                        <input type="radio" name="q{{num}}" value="1" id="q1" checked>
+                                        <span>1 - Strongly Disagree</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="answer">
+                                <p>
+                                    <label class=" hoverable">
+                                        <input type="radio" name="q{{num}}" value="2" id="q2">
+                                        <span>2 - Somewhat Disagree</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="answer">
+                                <p>
+                                    <label class=" hoverable">
+                                        <input type="radio" name="q{{num}}" value="3" id="q3">
+                                        <span>3 - Undecided</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="answer">
+                                <p>
+                                    <label class=" hoverable">
+                                        <input type="radio" name="q{{num}}" value="4" id="q4">
+                                        <span>4 - Somewhat Agree</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="answer">
+                                <p>
+                                    <label class=" hoverable">
+                                        <input type="radio" name="q{{num}}" value="5" id="q5">
+                                        <span>5 - Strongly Agree</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="answer">
-            <p>
-                <label>
-                    <input type="radio" name="q{{num}}" value="2" id="q2">
-                    <span>2</span>
-                </label>
-            </p>
-        </div>
-        <div class="answer">
-            <p>
-                <label>
-                    <input type="radio" name="q{{num}}" value="3" id="q3">
-                    <span>3</span>
-                </label>
-            </p>
-        </div>
-        <div class="answer">
-            <p>
-                <label>
-                    <input type="radio" name="q{{num}}" value="4" id="q4">
-                    <span>4</span>
-                </label>
-            </p>
-        </div>
-        <div class="answer">
-            <p>
-                <label>
-                    <input type="radio" name="q{{num}}" value="5" id="q5">
-                    <span>5</span>
-                </label>
-            </p>
-        </div>
-    </div>
-    {{/each}}
-    <button type="submit">Find your friends!</button>
-</form>
+        {{/each}}
+        <button type="submit" class="waves-effect waves-light btn-large">
+            <i class="material-icons left">
+                question_answer
+            </i>Find your friends!</button>
+    </form>
+</div>
 
 {{!-- FOOTER SECTION --}}
-<footer>
-
+<footer class="page-footer grey darken-2">
+    <div class="container">
+        <div class="row">
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li>
+                        <a href="https://github.com/loftusjl" target="_blank" class="tooltipped" data-position="top" data-tooltip="GitHub">
+                            <i class="fab fa-lg fa-github-square fa-2x left"></i> GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/jesse-loftus-861aaa1b/" target="_blank" class="tooltipped" data-position="top" data-tooltip="Linkedin">
+                            <i class="fab fa-lg fa-linkedin fa-2x left"></i>Linkedin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/JLLoft" target="_blank" class="tooltipped" data-position="top" data-tooltip="Twitter">
+                            <i class="fab fa-lg fa-twitter-square fa-2x left"></i>Twitter
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2018 Copyright Jesse Loftus
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+    </div>
 </footer>
 {{!-- MODAL --}}
 <div id="modal1" class="modal">
@@ -66,9 +108,6 @@
         <a href="/survey" class="modal-action modal-close waves-effect">Retake Survey</a>
     </div>
 </div>
-{{!-- Import jQuery for ajax calls --}}
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
 
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
@@ -110,5 +149,3 @@
     })
 
 </script>
-<!--Materialize-->
-<script type="text/javascript" src="js/materialize.min.js"></script>

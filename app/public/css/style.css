@@ -1,61 +1,40 @@
 .questions {
     display:flex;
 }
+nav {
+    z-index: 1;
+}
+html, body{
+    height: 100%;
+  }
+  body { 
+              background-image: url('../images/friends02.jpg') ;
+              background-position: center center;
+              background-repeat:  no-repeat;
+              background-attachment: fixed;
+              background-size:  cover;
+              background-color: #999;
+              display: flex;
+              min-height: 100vh;
+              flex-direction: column;
+  }
+  main {
+    flex: 1 0 auto;
+  }
+     
 .answer {
     flex: 1;
 }
-nav {
-    color: #f5eedb;
-}
-header {
-    background: url('../images/friends02.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-}
 .container {
     margin: auto;
+    background-color: rgba(153, 153, 153, 0.533);
 }
-.container .row{
-    display: flex;
-}
-.container .row .col{
-    margin: 0 auto;
-}
-#portfolio {
-    padding-top: 0;
-    padding-bottom: 2rem;
-    min-height: 100vh;
-}
-#aboutme  {
-    min-height: 100vh;
-    
-}
-#contact {
-    min-height: 90vh;
-
-}
-.material-icons{
-    display: inline-flex;
-    vertical-align: top;
-}
-.hero-text {
-    margin-top: 15%;
-}
-.me {
-    font-family: 'Abril Fatface', cursive;
-    color: rgb(202, 218, 236);
-    text-shadow: -1px 0 #000000a4, 0 1px #000000, 1px 0 #00000071, 0 -1px #00000071;
-    margin: 0 auto;
-}
-.card-reveal {
-    overflow:hidden
+.card-container {
+    margin-top: 15px;
+    padding: 15px;
 }
 .card-title {
-    margin-top:0;
-}
-nav {
-    background-color: rgba(43, 55, 55, 0.363);
+    padding: 15px;
 }
 .sidenav-wrapper {
         padding-left: 300px;
@@ -70,17 +49,6 @@ margin: 5px auto;
 .offscreen {
     position: absolute;
     left: -999em;
-}
-
-.section{
-    padding-top: 4vw;
-    padding-bottom: 4vw;
-    /* max-height: 60vh; */
-  }
-.section > h3 {
-    font-weight: bolder;
-    font-size: 1.5rem;
-    margin-top: .5rem;
 }
 .footer {
     padding: 15px;

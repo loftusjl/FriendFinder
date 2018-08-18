@@ -1,4 +1,3 @@
-const path = require('path');
 const surveyQuestions = require('../data/surveyQuestions');
 module.exports = function (app) {
 

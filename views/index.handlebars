@@ -7,11 +7,22 @@
                     <span class="card-title yellow-text text-lighten-5"><h4>Welcome to Friend Finder</h4></span>
                 </div>
                 <div class="card-content">
-                    <p>Friend Finder is a full-stack web-app that will compare your survey results with those of 200 users and
-                        return the name and profile pic of the people who match your responses most closely!</p>
+                    <p>Friend Finder is a full-stack web-app that will compare your survey results with those of 200 users
+                        and return the name and profile pic of the people who match your responses most closely!</p>
                 </div>
                 <div class="card-action">
-                    <a href="/survey">Take the survey!</a>
+                    <div class="input-field col s6">
+                        <input id="name" type="text" class="validate">
+                        <label for="name">Enter Your Full Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="profilePic" type="text" class="validate">
+                        <label for="profilePic">Add a URL for your profile pic</label>
+                    </div>
+                    <a href="/survey" class="waves-effect waves-light btn">Take the survey!</a>
+                    <a href="/api/friends" class="waves-effect waves-light btn"><i class="material-icons">
+people
+</i></a>
                 </div>
             </div>
         </div>

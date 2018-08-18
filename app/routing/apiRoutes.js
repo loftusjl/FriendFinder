@@ -1,21 +1,16 @@
 var friends = require('../data/friends.js');
-
-
 // used to reduce score arrays once maths have been done
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
 module.exports = function (app) {
     // send list of all people who have taken the survey
     app.get('/api/friends', function (req, res) {
         res.json(friends);
     });
-
     // check compatibility between end-user and friends list data
     app.post('/api/friends', function (req, res) {
         let friendGroup = [];
         let newFriend = req.body;
         let closestMatch = [];
-
         // check answers against each friend
         friends.forEach(friend => {
             let scoreArray = [];
@@ -40,13 +35,9 @@ module.exports = function (app) {
         closestMatch.forEach(match => findLowest(match));
         res.json(friendGroup); // send JSON of closest match friends
         function findLowest(match) { 
-            
             if (match.score === min) {
                 friendGroup.push({name:match.name, photo: match.photo } );
             } 
         }
     });
 };
-
-// pushes all lowest difference matches to an array
-// allows for multiple friends in the off chance there is a tie
